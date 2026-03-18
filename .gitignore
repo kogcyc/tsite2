@@ -1,0 +1,15 @@
+# Node / Wrangler
+node_modules/
+package-lock.json
+npm-debug.log
+
+# Wrangler / Cloudflare
+.wrangler/
+.dev.vars
+
+# Python (optional but good hygiene)
+__pycache__/
+*.pyc
+
+# Build output (VERY important for Tissue)
+public/
