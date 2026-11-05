@@ -318,14 +318,16 @@
 
 /* Compact tube comparison, scoped to the article widget. */
 #compact-tube-calculator * { box-sizing: border-box }
-#compact-tube-calculator { max-width: 580px; font: 16px system-ui; color: #243630; line-height: 1.5; }
-#compact-tube-calculator h2 { font-size: 1.65rem; margin: 0 0 16px }
+#compact-tube-calculator { max-width: 580px; font: 16px "Crimson Pro", Georgia, serif; color: #243630; line-height: 1.5; }
+#compact-tube-calculator h2 { font-family: "Crimson Pro", Georgia, serif; font-size: 1.65rem; margin: 0 0 16px }
 #compact-tube-calculator .controls { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px }
 #compact-tube-calculator label { font-size: .83rem }
-#compact-tube-calculator input, #compact-tube-calculator select { display: block; width: 100%; min-width: 0; min-height: 44px; margin-top: 4px; padding: 6px; font: 16px system-ui; color: inherit; background: white; border: 1px solid #abbab1; border-radius: 6px }
+#compact-tube-calculator input, #compact-tube-calculator select { display: block; width: 100%; min-width: 0; min-height: 44px; margin-top: 4px; padding: 6px; font: 16px "Crimson Pro", Georgia, serif; color: inherit; background: white; border: 1px solid #abbab1; border-radius: 6px }
 #compact-tube-calculator table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: .86rem; font-variant-numeric: tabular-nums }
 #compact-tube-calculator th, #compact-tube-calculator td { padding: 8px 4px; text-align: right; border-bottom: 1px solid #ccd6ce }
 #compact-tube-calculator th:first-child, #compact-tube-calculator td:first-child { text-align: left }
 #compact-tube-calculator .reference { display: block; font-size: .75rem }
 #compact-tube-calculator #status, #compact-tube-calculator #error { font-size: .83rem }
 #compact-tube-calculator #error { color: #983621 }
+
+.article-content:has(#compact-tube-calculator) { font-family: "Crimson Pro", Georgia, serif; }

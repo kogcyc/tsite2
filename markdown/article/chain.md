@@ -175,3 +175,5 @@ function update(){for(const id of ['t1','t2','links'])$(id+'value').textContent=
 })();
 </script>
 </div>
+
+To model a bicycle chain drive, use the sliders to select the number of teeth on the front chainring (T1), the rear sprocket (T2), and the number of links in the chain. The model uses standard bicycle chain dimensions: 12.7 mm (½ inch) pitch and 7.9375 mm (5/16 inch) roller diameter. As you change the tooth counts or chain length, the model recalculates the sprocket diameters, chain path, and center-to-center distance (C). Use the visibility controls to examine the mechanism one component at a time: hide the sideplates to reveal the rollers, hide the sprockets to study the chain's geometry, or display the center distance to see how different combinations affect the layout. Start with the complete assembly, then progressively remove components to discover how two fundamental dimensions—chain pitch and roller diameter—govern the geometry of the drivetrain.

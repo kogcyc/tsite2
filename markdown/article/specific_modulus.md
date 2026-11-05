@@ -19,3 +19,7 @@ template: template_page.html
 <p id="status"></p>
 </div>
 <script src="/static/compact-tube-calculator.js" defer></script>
+
+Specific modulus is Young’s modulus divided by density (E/ρ). It tells you how much elastic stiffness a material provides relative to its mass. Steel is roughly three times as stiff as aluminum for the same tube dimensions, but it’s also roughly three times as dense, so their specific moduli are close. Titanium is in the same ballpark. For thin-walled tubes of the same outside diameter, similar specific moduli tend to give similar weights at equal bending stiffness. As the walls get thicker, that approximation becomes less exact because more of the material sits closer to the center, where it contributes less to bending stiffness.
+
+The calculator starts with a 4130 steel tube, 28.6 mm in outside diameter with a 0.7 mm wall. Choose a reference material and wall thickness, and it predicts how far that tube bends under the selected load. It then calculates how thick the walls of the other two materials need to be to bend the same amount, keeping the outside diameter, span, load, and support setup fixed. The table shows the resulting wall thicknesses and tube weights, so you can compare what each material weighs when all three tubes bend equally.
