@@ -1,4 +1,6 @@
 .logo-mark {
+  position: relative;
+  left: 4px;
   letter-spacing: -1px;
   text-rendering: geometricPrecision;
 }
@@ -215,4 +217,101 @@
     font-size: 2.5rem;
     line-height: 1.4;
   }
+}
+
+.site-header {
+  background-color: #fff8ed;
+}
+
+/* Tube calculator: keep its controls and layout inside the article. */
+#tube-calculator { color: #161616; line-height: 1.5; }
+#tube-calculator * { box-sizing: border-box; min-width: 0; }
+#tube-calculator h2,
+#tube-calculator summary,
+#tube-calculator .value,
+#tube-calculator .insight strong {
+  font-family: "IBM Plex Sans Condensed", Helvetica, Arial, sans-serif;
+  color: #6a4a2c;
+}
+#tube-calculator h2 { margin: 0 0 1rem; font-size: 1.5rem; }
+#tube-calculator p { margin: 0.8rem 0; }
+#tube-calculator .eyebrow,
+#tube-calculator .badge {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #d94f30;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+#tube-calculator .shared,
+#tube-calculator .card,
+#tube-calculator .insight,
+#tube-calculator details {
+  border: 1px solid rgb(0 0 0 / 15%);
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  background: #fff8ed;
+}
+#tube-calculator .shared {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+#tube-calculator .columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+#tube-calculator .card { border-top: 4px solid var(--accent); }
+#tube-calculator .top { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+#tube-calculator .top h2 { margin: 0; }
+#tube-calculator label,
+#tube-calculator button,
+#tube-calculator .sub,
+#tube-calculator table,
+#tube-calculator .unit {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+  color: #6a4a2c;
+}
+#tube-calculator label { display: block; }
+#tube-calculator input,
+#tube-calculator select {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.65rem;
+  border: 1px solid rgb(0 0 0 / 20%);
+  border-radius: 0.5rem;
+  background: #fff8ed;
+  color: #161616;
+  font: inherit;
+}
+#tube-calculator input:focus-visible,
+#tube-calculator select:focus-visible,
+#tube-calculator button:focus-visible,
+#tube-calculator summary:focus-visible { outline: 2px solid #d94f30; outline-offset: 3px; }
+#tube-calculator .wall { margin-top: 1rem; }
+#tube-calculator button {
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #6a4a2c;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background: #fff8ed;
+}
+#tube-calculator button:hover { background: #ffdd99; }
+#tube-calculator .drawing { width: 100%; height: 100px; }
+#tube-calculator .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgb(0 0 0 / 15%); }
+#tube-calculator .value { font-size: 1.8rem; font-weight: 600; line-height: 1.2; overflow-wrap: anywhere; }
+#tube-calculator .sub { line-height: 1.7; }
+#tube-calculator .insight { margin: 1.25rem 0; background: #ffdd99; }
+#tube-calculator .insight strong { font-size: 1.4rem; }
+#tube-calculator details { overflow-x: auto; }
+#tube-calculator summary { cursor: pointer; font-weight: 600; }
+#tube-calculator table { width: 100%; border-collapse: collapse; }
+#tube-calculator th,
+#tube-calculator td { text-align: left; padding: 0.6rem; border-bottom: 1px solid rgb(0 0 0 / 15%); }
+#tube-calculator .error { color: #a33d27; font-size: 0.9rem; min-height: 1.5rem; }
+#tube-calculator footer { margin-top: 1rem; font-size: 0.9rem; }
+@media (max-width: 950px) {
+  #tube-calculator .columns { grid-template-columns: 1fr; }
+}
+@media (max-width: 540px) {
+  #tube-calculator .shared { grid-template-columns: 1fr; }
 }
