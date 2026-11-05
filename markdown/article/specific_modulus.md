@@ -1,14 +1,21 @@
 ---
 title: Specific Modulus
 desc: Compare tube weight and stiffness across steel, aluminum, and titanium.
-image:
+image: /static/specific.png
 template: template_page.html
 ---
-<div id="tube-calculator">
-<header><span class="eyebrow">Bicycle tubing · material explorer</span></header><h2>Tube / Tube / Tube</h2><p>Same length. Same diameter. Same load.<br>Change the metal and wall thickness to explore the weight of stiffness.</p>
-<section class="shared" aria-label="Shared test conditions"><label>Tube length / span · mm<input id="length" type="number" min="1" value="600"></label><label>Outside diameter · mm<input id="diameter" type="number" min="0.1" step="0.1" value="28.6"></label><label>Applied load · N<input id="load" type="number" min="0" value="100"></label><label>Bending test<select id="support"><option value="48">Simply supported · center load</option><option value="3">Cantilever · tip load</option></select></label></section>
-<div class="columns" id="cards"></div><div id="error" class="error" role="status"></div><section class="insight" aria-live="polite"><strong id="comparison"></strong><p id="explanation"></p></section>
-<details><summary>The material science & calculation</summary><p>Specific modulus is Young’s modulus divided by density, E/ρ. These metals fall in a similar range, but they are not identical.</p><table><thead><tr><th>Material</th><th>E · GPa</th><th>ρ · g/cm³</th><th>E/ρ · MJ/kg</th></tr></thead><tbody id="properties"></tbody></table><p>For a uniform round tube: d = D − 2t; A = π(D² − d²)/4; I = π(D⁴ − d⁴)/64. Mass = ρAL. Midspan deflection = FL³/(48EI) for the simply supported test; tip deflection = FL³/(3EI) for the cantilever. Calculations use N and mm, with E converted to N/mm². “Weight” is displayed as mass in grams.</p><p>For thin walls, I ≈ AD²/8. At fixed outside diameter and matched EI, mass is therefore approximately proportional to ρ/E. With thicker walls this approximation becomes less accurate: material added toward the center contributes less bending stiffness per gram. The match buttons solve the exact annular-section equation. Wall thicknesses are displayed to one decimal place and weights to whole grams; matched calculations retain full precision.</p><p>This is an ideal, small-deflection Euler–Bernoulli beam model for straight, constant-wall tubes. It excludes shear deflection, self-weight loading, joints, butting, yielding, buckling and fatigue. It illustrates elastic stiffness, not whether a bicycle frame is safe.</p><p><b>Property notes:</b> 6061-T6 aluminum uses typical published values of E = 68.9 GPa and density = 2.70 g/cm³. These are representative elastic properties; verify against your tube supplier. Titanium is Ti-3Al-2.5V, alpha annealed, using E = 100 GPa and ρ = 4.48 g/cm³. Alloy condition and source can change the comparison.</p><p>Sources: <a href="https://www.aerospacemetals.com/wp-content/uploads/2023/06/Aluminum-6061-T6-6061-T651.pdf">6061-T6 supplier data</a> · <a href="https://specialtysteelsupply.com/wp-content/docs/4130.pdf">4130 supplier data</a> · <a href="https://www.aerospacemetals.com/wp-content/uploads/2023/07/Titanium-Ti-3Al-2.5V-alpha-annealed-Data-Sheet-.pdf">Ti-3Al-2.5V supplier data</a>.</p></details><footer>Compare the numbers, then match deflection. Similar specific modulus is a useful starting point; tube geometry completes the picture.</footer>
-
+<div id="compact-tube-calculator">
+<h2>Tube comparison</h2>
+<div class="controls">
+<label>Reference material<select id="material"><option value="0">4130 steel</option><option value="1">6061-T6 aluminum</option><option value="2">Ti-3Al-2.5V</option></select></label>
+<label>Outside diameter · mm<input id="diameter" type="number" inputmode="decimal" min="0.1" step="0.1" value="28.6"></label>
+<label>Reference wall · mm<input id="wall" type="number" inputmode="decimal" min="0.1" step="0.1" value="0.7"></label>
+<label>Length / span · mm<input id="length" type="number" inputmode="decimal" min="1" step="any" value="600"></label>
+<label>Load · N<input id="load" type="number" inputmode="decimal" min="0" step="any" value="100"></label>
+<label>Bending test<select id="support"><option value="48">Supported · center load</option><option value="3">Cantilever · tip load</option></select></label>
 </div>
-<script src="/static/tube-calculator.js" defer></script>
+<p id="error" role="alert" hidden></p>
+<table><thead><tr><th>Material</th><th>Wall<br>mm</th><th>Weight<br>g</th><th>Deflection<br>mm</th></tr></thead><tbody id="results" aria-live="polite"></tbody></table>
+<p id="status"></p>
+</div>
+<script src="/static/compact-tube-calculator.js" defer></script>
