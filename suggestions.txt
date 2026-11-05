@@ -1,0 +1,12 @@
+A few things are already thoughtful: frontmatter validation catches mistakes, templates are constrained to the templates directory, output paths are checked, and search and sitemap generation are built in.
+
+The first thing I’d improve is build reliability. It deletes public/ before validating the content, so a typo in frontmatter can wipe out the last working build. I’d build into a temporary directory and replace public/ only after everything succeeds.
+
+Then I’d address a few smaller issues:
+
+- Image requirements: Every page must declare an image, even pages that don’t use one. Making it optional would avoid placeholder values like the index page’s http://image.png.
+- Exclusions: Any exclusion currently removes a page from search—even an exclusion intended only for the sitemap. That behavior is surprising given the separate exclusion names.
+- Escaping: Enable Jinja’s HTML autoescaping by default, while continuing to mark rendered Markdown as trusted HTML.
+- Ordering: Explicitly sort pages so navigation and listings have a predictable order.
+
+I’d keep its scope modest. It doesn’t need a plugin ecosystem or a complicated configuration system. A reliable build, predictable behavior, and a little documentation would make it a solid generator for a small editorial site.

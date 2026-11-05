@@ -12,7 +12,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
   <link rel="manifest" href="/static/favicon/site.webmanifest">
   {% block head_extras %}{% endblock %}
-  <link rel="stylesheet" href="/static/site.css?v=20260315b">
+  <link rel="stylesheet" href="/static/site.css">
 </head>
 
 <body class="{% block body_class %}{% endblock %}">
@@ -20,7 +20,7 @@
   {% block page %}{% endblock %}
 
   {% block footer %}
-  <footer class="site-footer bg-[#ffdd99] text-black">
+  <footer class="site-footer text-white">
     <div class="mx-auto max-w-6xl px-6 pb-10 pt-4 text-sm sm:px-10 lg:px-12">
     {% include "partial_footer.html" %}
     </div>

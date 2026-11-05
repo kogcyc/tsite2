@@ -1,7 +1,7 @@
 ---
 title: Handbook
 desc: a handbook
-image:
+image: /static/handbook.jpg
 template: template_page.html
 ---
 This is the handbook!

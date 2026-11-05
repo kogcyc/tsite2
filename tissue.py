@@ -30,7 +30,7 @@ STATIC_DIR    = ROOT_DIR / "static"
 
 # Sitemap settings — e.g. "https://example.com"
 sitemap_path       = BUILD_DIR / "sitemap.xml"
-sitemap_base_url   = os.getenv("TISSUE_SITEMAP_BASE_URL", "https://kogswellcycles.com")
+sitemap_base_url   = os.getenv("TISSUE_SITEMAP_BASE_URL", "http://127.0.0.1:8000")
 
 # Frontmatter keys
 VALID_EXCLUDE_VALUES = {"all_pages", "section", "sitemap", "search"}
@@ -43,6 +43,7 @@ FRONTMATTER_SCHEMA = {
     "exclude": {"required": False, "type": list},
 }
 KNOWN_KEYS = set(FRONTMATTER_SCHEMA.keys())
+
 
 # Section color system for tiles and section-entry cards.
 # Add future sections here (e.g. "products") so tiles pick up colors globally.
@@ -277,14 +278,6 @@ def safe_output_path(permalink):
     return out_path
 
 
-def has_top_level_404(all_pages):
-    expected_404 = (BUILD_DIR / "404.html").resolve()
-    for page in all_pages:
-        if safe_output_path(page["permalink"]) == expected_404:
-            return True
-    return False
-
-
 # ------------------------------------------------------------
 # Render pages
 # ------------------------------------------------------------
@@ -404,14 +397,6 @@ def main():
         print("🏠 Homepage detected (markdown/index.md → public/index.html)")
     else:
         print("⚠️  No homepage found (missing markdown/index.md)")
-
-    if has_top_level_404(all_pages):
-        print("🧱 Top-level 404 detected (public/404.html) for Cloudflare Pages.")
-    else:
-        print(
-            "⚠️  No top-level 404.html will be generated. "
-            "Cloudflare Pages will treat this as SPA fallback and route unknown paths to '/'."
-        )
 
     render_pages(all_pages, env)
     generate_search_index(all_pages)

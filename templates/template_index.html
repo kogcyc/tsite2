@@ -29,8 +29,8 @@
             <span class="material-symbols-outlined text-[24px]">search</span>
           </a>
           <a
-            href="/site/menu/"
-            aria-label="Menu"
+            href="/"
+            aria-label="Home"
             class="inline-flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-white/80 font-ui text-ink transition hover:border-ember hover:text-ember"
           >
             <span class="material-symbols-outlined text-[26px]">menu</span>
@@ -39,80 +39,28 @@
       </div>
     </nav>
   </div>
-  <section id="hero" class="relative mx-auto max-w-6xl px-6 py-12 sm:px-10 sm:py-16 lg:px-12">
-    <div class="w-full space-y-8">
-      {% if image %}
-      <figure class="relative overflow-hidden rounded-[18px] border border-black/15 bg-paper">
-        <img
-          src="{{ image }}"
-          alt="{{ title }}"
-          class="h-[min(68vh,42rem)] w-full object-cover"
-          loading="eager"
-          decoding="async"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent"></div>
-        <figcaption class="absolute inset-x-0 bottom-0 p-6 sm:p-8 lg:p-10">
-          <p class="max-w-3xl font-display text-3xl leading-tight text-paper sm:text-4xl lg:text-5xl">
-            {{ title }}
-          </p>
-          <p class="mt-3 max-w-2xl text-lg leading-7 text-paper/90">
-            {{ desc }}
-          </p>
-        </figcaption>
-      </figure>
-      {% endif %}
-
-      <div class="grid gap-4 md:grid-cols-2">
-        <a
-          href="/article/"
-          class="block rounded-[10px] border border-black/15 {{ section_styles.article.hub_bg }} p-5"
-        >
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <p class="font-ui text-xs font-semibold uppercase tracking-[0.28em] text-transparent">
-                article
-              </p>
-              <h3 class="mt-1 text-xl font-semibold leading-tight {{ section_styles.article.hub_title_text }}">
-                Articles ( yes, it is a blog )
-              </h3>
-            </div>
-            <span
-              class="mt-1 inline-flex h-9 w-9 shrink-0 items-center justify-center border {{ section_styles.article.hub_arrow_border }} text-sm {{ section_styles.article.hub_arrow_text }}"
-            >
-              ↗
-            </span>
-          </div>
-          <p class="mt-3 text-base leading-7 {{ section_styles.article.hub_desc_text }}">
-            Open the article index page.
-          </p>
-        </a>
-
-        {% for p in all_pages if p.permalink != this_page.permalink %}
-        <a
-          href="{{ p.permalink }}"
-          class="block rounded-[10px] border border-black/15 {{ p.section_style.tile_bg }} p-5"
-        >
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <p class="font-ui text-xs font-semibold uppercase tracking-[0.28em] {{ p.section_style.tile_kicker_text }}">
-                {{ p.section }}
-              </p>
-              <h3 class="mt-1 text-xl font-semibold leading-tight text-ink">
-                {{ p.title }}
-              </h3>
-            </div>
-            <span
-              class="mt-1 inline-flex h-9 w-9 shrink-0 items-center justify-center border border-black/10 text-sm text-stone-500"
-            >
-              ↗
-            </span>
-          </div>
-          <p class="mt-3 text-base leading-7 text-stone-700">
-            {{ p.desc }}
-          </p>
-        </a>
-        {% endfor %}
-      </div>
+  <section aria-label="Explore Kogswell" class="relative mx-auto max-w-6xl px-6 pt-10 pb-8 sm:px-10 sm:pb-12 lg:px-12">
+    {% if content %}
+    <div class="article-content mb-10 max-w-3xl text-lg leading-8 text-ink">
+      {{ content | safe }}
+    </div>
+    {% endif %}
+    <div class="grid gap-10">
+      {% for p in all_pages if p.permalink != this_page.permalink %}
+      <a href="{{ p.permalink }}" class="group flex flex-col gap-5 rounded-[1.75rem] border border-black/10 bg-paper p-6 shadow-sm transition hover:border-ember hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ember sm:flex-row sm:items-center sm:gap-8 sm:p-8">
+        {% if p.image %}
+        <img src="{{ p.image | e }}" alt="" loading="lazy" class="aspect-[3/2] w-full shrink-0 rounded-2xl object-cover sm:w-36">
+        {% endif %}
+        <div class="min-w-0 flex-1">
+          <p class="font-ui text-xs font-semibold uppercase tracking-[0.2em] text-ember">{{ p.section }}</p>
+          <h2 class="mt-2 font-display text-2xl leading-tight text-ink sm:text-3xl">{{ p.title }}</h2>
+          {% if p.desc %}
+          <p class="mt-3 max-w-3xl text-base leading-7 text-ink/75">{{ p.desc }}</p>
+          {% endif %}
+        </div>
+        <span aria-hidden="true" class="material-symbols-outlined self-end text-3xl text-tobacco transition group-hover:translate-x-1 group-hover:text-ember sm:self-center">arrow_forward</span>
+      </a>
+      {% endfor %}
     </div>
   </section>
 </main>
